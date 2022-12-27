@@ -17,7 +17,7 @@ namespace Petzey.Pet.Domain.Entities
         public string Age { get; set; }
         public string BloodGroup { get; set; }
         public string Allergies { get; set; }
-        PetOwner PetOwner { get; set; }
+        public int PetOwnerId { get; set; }
     }
     public enum Species
     {

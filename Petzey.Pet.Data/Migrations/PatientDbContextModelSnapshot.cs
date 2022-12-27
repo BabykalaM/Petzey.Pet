@@ -52,10 +52,15 @@ namespace Petzey.Pet.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("PetOwnerId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Species")
                         .HasColumnType("int");
 
                     b.HasKey("PatientId");
+
+                    b.HasIndex("PetOwnerId");
 
                     b.ToTable("Pets");
                 });
@@ -85,6 +90,20 @@ namespace Petzey.Pet.Data.Migrations
                     b.HasKey("PetOwnerId");
 
                     b.ToTable("PetOwners");
+                });
+
+            modelBuilder.Entity("Petzey.Pet.Domain.Entities.Patient", b =>
+                {
+                    b.HasOne("Petzey.Pet.Domain.Entities.PetOwner", null)
+                        .WithMany("Patients")
+                        .HasForeignKey("PetOwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Petzey.Pet.Domain.Entities.PetOwner", b =>
+                {
+                    b.Navigation("Patients");
                 });
 #pragma warning restore 612, 618
         }

@@ -61,6 +61,12 @@ namespace Petzey.Pet.API.Controllers
             return Ok();
         }
 
-
+        //[HttpGet]
+        //////[EnableQuery]
+        ////Route["{id}"]
+        //public IActionResult GetPetOwner(int id)
+        //{
+        //    return Ok(repo.GetPetOwner(id));
+        //}
     }
 }

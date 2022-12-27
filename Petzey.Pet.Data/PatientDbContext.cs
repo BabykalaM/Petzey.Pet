@@ -12,7 +12,7 @@ namespace Petzey.Pet.Data
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\mssqllocaldb;Initial Catalog=PetzeyPatientDb;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=(localdb)\\mssqllocaldb;Initial Catalog=PatientDb;Integrated Security=True");
         }
         public DbSet<Patient> Pets { get; set; }
 

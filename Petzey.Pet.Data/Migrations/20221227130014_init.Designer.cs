@@ -12,7 +12,7 @@ using Petzey.Pet.Data;
 namespace Petzey.Pet.Data.Migrations
 {
     [DbContext(typeof(PatientDbContext))]
-    [Migration("20221226161050_init")]
+    [Migration("20221227130014_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -55,12 +55,58 @@ namespace Petzey.Pet.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("PetOwnerId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Species")
                         .HasColumnType("int");
 
                     b.HasKey("PatientId");
 
+                    b.HasIndex("PetOwnerId");
+
                     b.ToTable("Pets");
+                });
+
+            modelBuilder.Entity("Petzey.Pet.Domain.Entities.PetOwner", b =>
+                {
+                    b.Property<int>("PetOwnerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PetOwnerId"));
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("Mobile")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PetOwnerId");
+
+                    b.ToTable("PetOwners");
+                });
+
+            modelBuilder.Entity("Petzey.Pet.Domain.Entities.Patient", b =>
+                {
+                    b.HasOne("Petzey.Pet.Domain.Entities.PetOwner", null)
+                        .WithMany("Patients")
+                        .HasForeignKey("PetOwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Petzey.Pet.Domain.Entities.PetOwner", b =>
+                {
+                    b.Navigation("Patients");
                 });
 #pragma warning restore 612, 618
         }

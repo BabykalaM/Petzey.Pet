@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,9 @@ namespace Petzey.Pet.Domain.Entities
         public PetOwnerGender Gender { get; set; }
         public long Mobile { get; set; }
         public string Location { get; set; }
-        List<Patient> Patients { get; set; }
+        
+        //public int PetId { get; set; }
+        public List<Patient> Patients { get; set; }
     }
 
     public enum PetOwnerGender

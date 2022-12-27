@@ -29,9 +29,14 @@ namespace Petzey.Pet.Data
             return db.Pets.ToList();
         }
 
-        public Patient GetPatient(int id)
+        public Patient GetPatient(int petId)
         {
-            return db.Pets.Find(id);
+            return db.Pets.Find(petId);
+        }
+
+        public PetOwner GetPetOwner(int id)
+        {
+            return db.PetOwners.Find(id);
         }
 
         public void SavePatient(Patient patientToSave)

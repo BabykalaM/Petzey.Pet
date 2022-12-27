@@ -18,5 +18,8 @@ namespace Petzey.Pet.Domain.APIModels
         public string BloodGroup { get; set; }
         public string Allergies { get; set; }
         
+        public string PetOwnerName { get; set; }
+
+
     }
 }
