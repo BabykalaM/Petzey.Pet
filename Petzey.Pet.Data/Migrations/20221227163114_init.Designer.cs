@@ -12,7 +12,7 @@ using Petzey.Pet.Data;
 namespace Petzey.Pet.Data.Migrations
 {
     [DbContext(typeof(PatientDbContext))]
-    [Migration("20221227130014_init")]
+    [Migration("20221227163114_init")]
     partial class init
     {
         /// <inheritdoc />
